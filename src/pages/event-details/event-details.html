@@ -1,0 +1,49 @@
+<!--
+  Generated template for the EventDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{event.title}}</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="deleteEvent()"><ion-icon name="trash"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+          <!-- <ion-item>
+              <ion-label>Дата:</ion-label> -->
+              <!-- <ion-input readonly="true" (click)="openDatePicker(datePicker)" [(ngModel])="event.date | date: 'fullDate'"></ion-input> -->
+              <!-- <ion-datetime #datePicker  
+              monthNames="Января, Февраля, Марта, Апреля, Мая, Июня, Июля, Августа, Сентября, Октября, Ноября, Декабря"
+              displayFormat="DD MMMM" pickerFormat="DDD MMMM" [(ngModel)]="someDate"></ion-datetime> -->
+              <!-- {{event.date | date: 'fullDate'}} -->
+          <!-- </ion-item> -->
+          <ion-item>
+              <ion-label>Время:</ion-label>
+              <ion-datetime  monthNames="Января, Февраля, Марта, Апреля, Мая, Июня, Июля, Августа, Сентября, Октября, Ноября, Декабря" displayFormat="DD MMMM в HH:mm" pickerFormat="DDD MMMM HH mm" [(ngModel)]="someDate"> </ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label>Описание:</ion-label>
+            <ion-textarea rows="5" [(ngModel)]="event.description" ></ion-textarea>
+          </ion-item>
+      </ion-list>                            
+            <!-- <ion-datetime #datePicker hidden="true" displayFormat="DD MMM" pickerFormat="DDD MMM" [(ngModel)]="someDate"></ion-datetime>
+            <ion-datetime #timePicker hidden="true" displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="someTime"> </ion-datetime> -->
+              <!-- <span> {{event.date | date: 'fullDate'}}</span>    -->
+        
+
+    </ion-card-content>
+  </ion-card>
+    
+
+</ion-content>

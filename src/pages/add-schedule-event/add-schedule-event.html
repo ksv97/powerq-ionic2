@@ -1,0 +1,53 @@
+<!--
+  Generated template for the AddScheduleEventPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Новое событие
+    </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+      </ion-buttons>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+          <!-- <ion-item>
+              <ion-label>Дата:</ion-label> -->
+              <!-- <ion-input readonly="true" (click)="openDatePicker(datePicker)" [(ngModel])="event.date | date: 'fullDate'"></ion-input> -->
+              <!-- <ion-datetime #datePicker  
+              monthNames="Января, Февраля, Марта, Апреля, Мая, Июня, Июля, Августа, Сентября, Октября, Ноября, Декабря"
+              displayFormat="DD MMMM" pickerFormat="DDD MMMM" [(ngModel)]="someDate"></ion-datetime> -->
+              <!-- {{event.date | date: 'fullDate'}} -->
+          <!-- </ion-item> -->
+          <ion-item>
+            <ion-label>Название</ion-label>
+            <ion-input type="text" [(ngModel)]="event.title"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label>Время:</ion-label>
+              <ion-datetime  monthNames="Января, Февраля, Марта, Апреля, Мая, Июня, Июля, Августа, Сентября, Октября, Ноября, Декабря" displayFormat="DD MMMM в HH:mm" pickerFormat="DDD MMMM HH mm" [(ngModel)]="date"> </ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label>Описание:</ion-label>
+            <ion-textarea rows="5" [(ngModel)]="event.description" ></ion-textarea>
+          </ion-item>
+      </ion-list>                            
+            <!-- <ion-datetime #datePicker hidden="true" displayFormat="DD MMM" pickerFormat="DDD MMM" [(ngModel)]="someDate"></ion-datetime>
+            <ion-datetime #timePicker hidden="true" displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="someTime"> </ion-datetime> -->
+              <!-- <span> {{event.date | date: 'fullDate'}}</span>    -->
+        
+      <button full ion-button color="secondary" (click)="save()">Сохранить</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

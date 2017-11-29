@@ -1,0 +1,20 @@
+
+    page-registration {
+         p {
+            font-size: 0.8em !important;
+            margin-bottom: 2px !important;
+            padding-bottom: 2px !important;
+            color: #ea6153 !important;
+        }
+   
+        ion-input, ion-select {
+            border-bottom: 1px solid #dedede;
+        }
+
+        .invalid {
+            border-bottom: 1px solid #ea6153 !important;
+        }
+    }
+    
+
+

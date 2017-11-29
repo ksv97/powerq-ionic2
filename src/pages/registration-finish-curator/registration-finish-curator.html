@@ -1,0 +1,34 @@
+<!--
+  Generated template for the RegistrationFinishCuratorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Завершение регистрации</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Факультет</ion-label>
+      <ion-select [(ngModel)]="this.curator.faculty">
+        <ion-option *ngFor="let fac of faculties" [value]="fac">{{fac.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Курируемые группы</ion-label>
+      <ion-input type="text" [(ngModel)]="groups"></ion-input>          
+    </ion-item>
+    <ion-item>
+      <span><i><small>Введите номера курируемых групп через запятую. Например, 41, 42в, 3а.</small></i></span>
+    </ion-item>
+    <button ion-button color="primary" block (click)="registerCurator()">Зарегистрироваться</button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,76 @@
+<!--
+  Generated template for the RegistrationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Регистрация</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines>
+    <form [formGroup]="userForm">
+
+
+
+            <ion-item>
+              <ion-label floating>Логин</ion-label>
+              <ion-input formControlName="login" type="text" [(ngModel)]="user.login" [class.invalid]="!userForm.controls.login.valid && (userForm.controls.login.dirty || submitAttempted)"></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!userForm.controls.login.valid && (userForm.controls.login.dirty || submitAttempted)">
+                <p>Логин должен состоять из цифр и букв латинского алфавита и не более 128 символов</p>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label floating>Пароль</ion-label>
+              <ion-input formControlName="password" type="password" [(ngModel)]="user.password" [class.invalid]="!userForm.controls.password.valid && (userForm.controls.password.dirty || submitAttempted)"></ion-input>
+            </ion-item>
+            
+            <ion-item *ngIf="!userForm.controls.password.valid && (userForm.controls.password.dirty || submitAttempted)">
+              <p>Это поле обязательно (не более 128 символов)</p>
+            </ion-item>
+
+      
+
+            <ion-item>
+              <ion-label floating>Имя</ion-label>
+              <ion-input formControlName="firstName" type="text" [(ngModel)]="user.firstName" [class.invalid]="!userForm.controls.firstName.valid && (userForm.controls.firstName.dirty || submitAttempted)"></ion-input>
+            </ion-item>
+      
+            <ion-item *ngIf="!userForm.controls.firstName.valid && (userForm.controls.firstName.dirty || submitAttempted)">
+                <p>Пожалуйста, введите имя из букв русского алфавита не более 128 символов</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Фамилия</ion-label>
+              <ion-input formControlName="surName" type="text" [(ngModel)]="user.surName" [class.invalid]="!userForm.controls.surName.valid && (userForm.controls.surName.dirty || submitAttempted)"></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!userForm.controls.surName.valid && (userForm.controls.surName.dirty || submitAttempted)">
+                <p>Пожалуйста, введите фамилию из букв русского алфавита не более 128 символов</p>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label floating>Должность</ion-label>
+              <ion-select formControlName="role" [(ngModel)]="this.user.role" [class.invalid]="!userForm.controls.role.valid && (userForm.controls.role.dirty || submitAttempted)">
+                  <ion-option *ngFor="let role of roles" [value]="role">{{role.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="!userForm.controls.role.valid && (userForm.controls.role.dirty || submitAttempted)">
+                <p>Пожалуйста, выберите должность</p>
+            </ion-item>
+
+    </form>
+    
+  </ion-list>
+
+  <button ion-button color="primary" block (click)="continueRegistration()">Продолжить</button>
+</ion-content>
