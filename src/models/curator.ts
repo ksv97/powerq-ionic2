@@ -6,5 +6,9 @@ export class Curator {
     faculty:  Faculty;
     curatedGroups: string[];
 
-    constructor () {}
+    constructor () {
+        this.curatedGroups = new Array();
+        this.user = new User();
+        this.faculty = new Faculty();
+    }
 }

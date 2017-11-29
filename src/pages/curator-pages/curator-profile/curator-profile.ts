@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { ShareService } from '../../../services/share.service';
+import { HttpService } from '../../../services/http.service';
+import { Curator } from '../../../models/curator';
 
 /**
  * Generated class for the CuratorProfilePage page.
@@ -16,19 +18,33 @@ import { ShareService } from '../../../services/share.service';
 })
 export class CuratorProfilePage {
 
-  name: string;
+  curator: Curator;  
 
-  constructor(public navCtrl: NavController, public share: ShareService, public navParams: NavParams, public menuCtrl: MenuController) {
-    this.name = this.share.currentUser.firstName;    
+  constructor(public navCtrl: NavController, public share: ShareService, public navParams: NavParams,
+     public menuCtrl: MenuController, public http: HttpService) {
+      this.curator = new Curator();
+
+      this.http.getCurator(this.share.currentUser.id).subscribe(
+        result => 
+        {
+          this.share.currentCurator = result;
+          this.curator = this.share.currentCurator;
+        },
+        error => console.log(error),
+      ); 
+    
+    //this.name = this.share.currentUser.firstName;    
   }
 
   ionViewDidEnter(){
     
    this.menuCtrl.enable(true, 'curatorMenu');
-   this.menuCtrl.swipeEnable(true,'curatorMenu');      
+   this.menuCtrl.swipeEnable(true,'curatorMenu');     
+  
   }
 
   ionViewDidLoad() {
+    
     console.log('ionViewDidLoad CuratorProfilePage');
   }
 

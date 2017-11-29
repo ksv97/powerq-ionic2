@@ -25,10 +25,9 @@ export class HttpService {
     }
 
     getEvents(userId: number) {
-        let url = this.baseUrl + 'events';
+        let url = this.baseUrl + `events?userId=${userId}`;
         let opts = new RequestOptions();
         opts.headers = this.requestOpts.headers;
-        opts.params.append('userId', userId.toString());
         return this.http.get(url, opts).map(result => result.json());
     }
 
@@ -61,5 +60,17 @@ export class HttpService {
         let url = this.baseUrl + 'users/login';
 
         return this.http.post(url,JSON.stringify(user), this.requestOpts).map(result => result.json());
+    }
+
+    getCurator(userId: number) {
+        let url = this.baseUrl + `users/curator?userId=${userId}`;
+
+        let opts = new RequestOptions();
+        opts.headers = this.requestOpts.headers;        
+        //opts.params.append('userId', userId.toString());
+
+        // dont have map operator
+        return this.http.get(url, opts).map(result => result.json());
+        
     }
 }

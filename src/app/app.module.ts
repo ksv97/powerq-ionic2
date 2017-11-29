@@ -21,7 +21,6 @@ import  {RegistrationPage} from '../pages/registration/registration'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { UserService } from '../services/user.service';
 import { CuratorPersonalRatingPage } from '../pages/curator-pages/curator-personal-rating/curator-personal-rating';
 import { FacultyRatingPage } from '../pages/faculty-rating/faculty-rating';
 import { EventDetailsPage } from '../pages/event-details/event-details';
@@ -80,7 +79,6 @@ import { AddScheduleEventPage } from '../pages/add-schedule-event/add-schedule-e
     SplashScreen,
     HttpService,
     ShareService,
-    UserService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: LOCALE_ID, useValue: "ru-RU" }
   ]

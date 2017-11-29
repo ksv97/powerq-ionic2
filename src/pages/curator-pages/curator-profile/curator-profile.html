@@ -19,7 +19,7 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-        <p class="header">Приветствуем Вас, {{name}}</p>
+        <p class="header">Приветствуем Вас, {{curator.user.firstName}}</p>
     </ion-card-header>
 
     <ion-card-content>
@@ -28,7 +28,7 @@
           <div><b>Факультет:</b></div>
         </ion-col>
         <ion-col col-7>
-          <div>ИВТФ и ЭМФ</div>  
+          <div>{{curator.faculty.name}}</div>  
         </ion-col>
       </ion-row>
       <ion-row>
@@ -36,7 +36,9 @@
           <div><b>Курируемые группы:</b></div>
         </ion-col>
         <ion-col col-7>
-          <div>1-42, 1-42В</div>
+          <span *ngFor="let gr of curator.curatedGroups; let i = index">
+            {{gr}}<span *ngIf="i != curator.curatedGroups.length - 1">, </span> 
+          </span>          
         </ion-col>
       </ion-row>
       <ion-row>
