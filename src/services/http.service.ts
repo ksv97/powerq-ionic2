@@ -31,6 +31,16 @@ export class HttpService {
         return this.http.get(url, opts).map(result => result.json());
     }    
 
+    updateEvent (event: ScheduleEvent) {
+        let url = this.baseUrl + `events/update`;
+        return this.http.post(url, JSON.stringify(event), this.requestOpts);
+    }
+
+    deleteEvent (id:number) {
+        let url = this.baseUrl + `events/delete`;
+        return this.http.post(url, JSON.stringify(id), this.requestOpts);
+    }
+
     getRoles () {
         let url = this.baseUrl + 'roles';
         return this.http.get(url).map(result => result.json())

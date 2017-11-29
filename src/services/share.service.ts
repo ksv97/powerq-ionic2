@@ -1,6 +1,6 @@
 import { User } from './../models/user';
-import { Injectable } from '@angular/core';
-import { ScheduleEvent } from '../models/schedule-event';
+import { Injectable, EventEmitter } from '@angular/core';
+import { ScheduleEvent} from '../models/schedule-event';
 import { Curator } from '../models/curator';
 import { ElderCurator } from '../models/elder-curator';
 
@@ -14,6 +14,12 @@ export class ShareService {
     currentEvent: ScheduleEvent;
     newEvent: ScheduleEvent;
 
+    public deleteScheduleEvent: EventEmitter<ScheduleEvent> = new EventEmitter();
+
     constructor() { }
+
+    public onScheduleEventDeleted (scheduleEvent: ScheduleEvent) {
+        this.deleteScheduleEvent.emit(scheduleEvent);
+    }
 
 }

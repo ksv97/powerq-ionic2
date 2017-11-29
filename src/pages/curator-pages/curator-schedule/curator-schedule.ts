@@ -5,6 +5,7 @@ import { EventDetailsPage } from '../../event-details/event-details';
 import { ShareService } from '../../../services/share.service';
 import { AddScheduleEventPage } from '../../add-schedule-event/add-schedule-event';
 import { HttpService } from '../../../services/http.service';
+import { Subscription } from 'rxjs/Subscription';
 
 
 /**
@@ -21,6 +22,7 @@ import { HttpService } from '../../../services/http.service';
 })
 export class CuratorSchedulePage {
 
+  eventDeletedSubscription: Subscription;
   //userEvents: ScheduleEvent[] = [];
   mockEvents: ScheduleEvent[];
   groupedEvents = [];
@@ -45,6 +47,10 @@ export class CuratorSchedulePage {
      
      ]        
     
+     this.eventDeletedSubscription = this.shareService.deleteScheduleEvent.subscribe(eventForDeleting => {
+       let index = this.mockEvents.indexOf(eventForDeleting);
+       this.mockEvents.splice(index,1);
+     })
   }
 
   // only works if events are sorted by date (so I shift this to server)
@@ -75,12 +81,16 @@ export class CuratorSchedulePage {
 
     modal.onDidDismiss( (item) => {
       if (item) {
-        this.mockEvents.push(item);
+        
         this.http.createEvent(item).subscribe(
-          result => console.log (result),
+          result => {            
+            item.id = result.json();
+            this.mockEvents.push(item);          
+            this.groupEvents(this.mockEvents);
+          },
           error => console.log(error),
         );
-        this.groupEvents(this.mockEvents);
+        
       }
     })
 

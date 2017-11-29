@@ -59,10 +59,6 @@ export class AddScheduleEventPage {
     this.event.users.push(this.shareService.currentUser);
     this.event.id = -1;    
     this.event.isDeadline = false;
-    this.http.createEvent(this.event).subscribe(
-      result => console.log(result),
-      error => console.log(error)
-    );
     this.view.dismiss(this.event); 
   }
 

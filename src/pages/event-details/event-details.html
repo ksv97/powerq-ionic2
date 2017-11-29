@@ -39,7 +39,7 @@
             <ion-textarea rows="5" [readonly]="readonly" [(ngModel)]="event.description" ></ion-textarea>
           </ion-item>
           <ion-item *ngIf="!readonly">
-            <button ion-button full (click)="disableEditing()">Сохранить</button>
+            <button ion-button full (click)="saveChanges()">Сохранить</button>
           </ion-item>
       </ion-list>                            
             <!-- <ion-datetime #datePicker hidden="true" displayFormat="DD MMM" pickerFormat="DDD MMM" [(ngModel)]="someDate"></ion-datetime>
