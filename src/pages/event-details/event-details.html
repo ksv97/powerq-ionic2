@@ -9,6 +9,7 @@
   <ion-navbar>
     <ion-title>{{event.title}}</ion-title>
     <ion-buttons end>
+        <button ion-button icon-only (click)="enableEditing()"><ion-icon name="create"></ion-icon></button>
         <button ion-button icon-only (click)="deleteEvent()"><ion-icon name="trash"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
@@ -30,11 +31,15 @@
           <!-- </ion-item> -->
           <ion-item>
               <ion-label>Время:</ion-label>
-              <ion-datetime  monthNames="Января, Февраля, Марта, Апреля, Мая, Июня, Июля, Августа, Сентября, Октября, Ноября, Декабря" displayFormat="DD MMMM в HH:mm" pickerFormat="DDD MMMM HH mm" [(ngModel)]="someDate"> </ion-datetime>
+              <ion-datetime *ngIf="!readonly"  monthNames="Января, Февраля, Марта, Апреля, Мая, Июня, Июля, Августа, Сентября, Октября, Ноября, Декабря" displayFormat="DD MMMM в HH:mm" pickerFormat="DDD MMMM HH mm" [(ngModel)]="someDate"> </ion-datetime>
+              <ion-datetime *ngIf="readonly" disabled monthNames="Января, Февраля, Марта, Апреля, Мая, Июня, Июля, Августа, Сентября, Октября, Ноября, Декабря" displayFormat="DD MMMM в HH:mm" pickerFormat="DDD MMMM HH mm" [(ngModel)]="someDate"> </ion-datetime>
           </ion-item>
           <ion-item>
             <ion-label>Описание:</ion-label>
-            <ion-textarea rows="5" [(ngModel)]="event.description" ></ion-textarea>
+            <ion-textarea rows="5" [readonly]="readonly" [(ngModel)]="event.description" ></ion-textarea>
+          </ion-item>
+          <ion-item *ngIf="!readonly">
+            <button ion-button full (click)="disableEditing()">Сохранить</button>
           </ion-item>
       </ion-list>                            
             <!-- <ion-datetime #datePicker hidden="true" displayFormat="DD MMM" pickerFormat="DDD MMM" [(ngModel)]="someDate"></ion-datetime>

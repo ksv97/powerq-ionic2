@@ -21,7 +21,7 @@ export class CuratorProfilePage {
   curator: Curator;  
 
   constructor(public navCtrl: NavController, public share: ShareService, public navParams: NavParams,
-     public menuCtrl: MenuController, public http: HttpService) {
+     public menuCtrl: MenuController, public http: HttpService) {       
       this.curator = new Curator();
 
       this.http.getCurator(this.share.currentUser.id).subscribe(

@@ -18,6 +18,7 @@ import { ShareService } from '../../services/share.service';
 export class EventDetailsPage {  
 
   event: ScheduleEvent;    
+  readonly: boolean = true;
 
   date: string;
   // time: string;
@@ -54,12 +55,24 @@ export class EventDetailsPage {
 
   }
 
+  ionViewDidEnter(){
+    this.readonly = true;
+  }
+
   openDatePicker (datePicker: DateTime) {    
     datePicker.open();
   }
 
   deleteEvent () {
 
+  }
+
+  disableEditing () {
+    this.readonly = true;
+  }
+
+  enableEditing () {
+    this.readonly = false;
   }
 
 }

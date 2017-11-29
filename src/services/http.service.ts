@@ -20,7 +20,7 @@ export class HttpService {
     }
 
     createEvent (event: ScheduleEvent) {
-        let url = this.baseUrl + 'events';
+        let url = this.baseUrl + 'events/create';
         return this.http.post(url, JSON.stringify(event), this.requestOpts);
     }
 
@@ -29,7 +29,7 @@ export class HttpService {
         let opts = new RequestOptions();
         opts.headers = this.requestOpts.headers;
         return this.http.get(url, opts).map(result => result.json());
-    }
+    }    
 
     getRoles () {
         let url = this.baseUrl + 'roles';
